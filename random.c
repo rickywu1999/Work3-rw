@@ -10,7 +10,7 @@ int myrand(){
   int f = open("/dev/random",O_RDONLY);
   void * p = malloc(4);
   read(f,p,4);
-  printf("%d\n",*((int*)p));
+  //printf("%d\n",*((int*)p));
   srand(*((int*)p));
   free(p);
   return rand();
@@ -24,12 +24,13 @@ int main(){
   while (c<10){
     int n = myrand();
     arr[c] = n;
-    printf("random#%d - %d",c+1,n );
+    printf("random#%d - %d\n",c+1,n );
     c++;
   }
   printf("\n");
-  int fd = open("randomList",O_CREAT|O_RDWR|O_TRUNC,0644);
+  umask(0);
+  int fd = open("randomList",O_CREAT|O_RDWR|O_APPEND,0644);
   write(fd,arr,40);
-  
+  close(fd);
   return 0;
 }
