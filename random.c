@@ -27,7 +27,7 @@ int main(){
     c++;
   }
   printf("\nWriting into randomList \n");
-  int fd = open("randomList",O_CREAT|O_RDWR|O_APPEND,0644);
+  int fd = open("randomList",O_CREAT|O_RDWR|O_APPEND|O_EXCL,0644);
   write(fd,arr,sizeof(int)*10);
   /*write(fd,arr,40);
     int arr2[10];
