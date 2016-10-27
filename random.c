@@ -17,7 +17,6 @@ int myrand(){
 }
 
 int main(){
-  umask(0);
   int arr[10];
   int c = 0;
   printf("Generating Numbers:\n");
@@ -31,6 +30,13 @@ int main(){
   umask(0);
   int fd = open("randomList",O_CREAT|O_RDWR|O_APPEND,0644);
   write(fd,arr,40);
+    int arr2[10];
+    int d = 0;
+    read(fd,arr2,40);
+    while (d<10){
+        printf("%d\n",arr2[d]);
+        d++;
+    }
   close(fd);
   return 0;
 }
