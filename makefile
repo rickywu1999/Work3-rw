@@ -4,5 +4,5 @@ clean:
 	rm random.out
 	rm randomList
 	rm *~
-run:
+run: random
 	./random.out
